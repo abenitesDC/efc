@@ -1,0 +1,11 @@
+.app--body {
+  grid-area: content;
+
+  .hero-image {
+    height: 100%;
+    width: 100%;
+    // background-image: url("./family-beach.jpeg");
+    // background-repeat: no-repeat;
+    // background-size: cover;
+  }
+}

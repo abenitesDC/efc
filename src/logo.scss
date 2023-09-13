@@ -1,0 +1,17 @@
+.app--logo {
+  padding: 4px;
+  
+  a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+
+    img, svg {
+      max-width: 40px;
+      height: auto;
+    }
+  }
+}

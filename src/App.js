@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { Grid, ThemeProvider, createTheme } from '@mui/material';
+import {
+    HashRouter as Router,
+} from "react-router-dom";
+
+import Header from './Header';
+import Body from './Body';
+import Footer from './Footer';
+
+import './App.scss';
+
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";                                //icons
+import { teal, red } from '@mui/material/colors';
 
 function App() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: teal[500],
+      },
+      secondary: {
+        main: red[900],
+      },
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Grid
+        className="app"
+          item
+          xs={12}
+          md={8}
+          sx={{
+            '& .markdown': {
+              py: 3,
+            },
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Header />
+          <Body />
+          <Footer />
+        </Grid>
+      </ThemeProvider>
+    </Router>
   );
 }
 

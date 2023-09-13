@@ -1,0 +1,83 @@
+.app--header {
+  grid-area: header;
+
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  font-size: calc(10px + 2vmin);
+
+  .p-megamenu {
+    border-radius: 0;
+    flex: 1; // menu takes the rest of space
+    background-color: #006064;
+    border: 0;
+    
+    .p-megamenu-root-list .p-menuitem {
+      .p-menuitem-link {
+        &:not(.p-disabled):hover {
+          border-bottom: 1px solid #e0f2f1;
+          background: none;
+          .p-submenu-icon {
+            color: #e0f2f1;
+          }
+          
+          .p-menuitem-text {
+            color: #e0f2f1;
+          }
+        } 
+
+        .p-menuitem-text{
+          color: #e0f2f1;
+        }
+
+        .p-submenu-icon {
+          color: #e0f2f1;
+        }
+      }
+    
+      &.p-menuitem-active {
+        .p-megamenu-panel {
+          .p-menuitem-link {
+            .p-menuitem-text {
+              color: #00695c;
+            }
+
+            &:not(.p-disabled):hover {
+              background: none;
+  
+              .p-menuitem-text {
+                color: #004d40;
+              }
+            }
+          }
+        }
+        .p-menuitem-link {
+          background: none;
+
+          &:not(.p-disabled):hover {
+            background: none;
+
+            .p-menuitem-text {
+              color: #e0f2f1;
+            }
+          }
+
+          &:focus-visible, &:focus {
+            outline: none;
+          }
+          
+          .p-menuitem-text {
+            color: #e0f2f1;
+          }
+        }
+      }
+
+
+      
+      // .p-menuitem-link:not(.p-disabled):hover {
+      //   // color: #e0f2f1;
+      //   background-color: #006064;
+      // }
+    }
+  }
+}
