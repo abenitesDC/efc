@@ -13,9 +13,7 @@ import {
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import SavingsOutlinedIcon from "@mui/icons-material/SavingsOutlined";
 import ShowChartRoundedIcon from "@mui/icons-material/ShowChartRounded";
-import {
-    Link,
-} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { cyan, teal } from "@mui/material/colors";
 
 import beach from "./family-beach.jpeg";
@@ -119,16 +117,6 @@ const Home = () => {
               Plan for the future with our EverSafe Life Solutions
             </Typography>
             <Typography
-              variant="subtitle1"
-              component="p"
-              textAlign={"center"}
-              padding={1}
-              color={cyan[900]}
-            >
-              Did you know that over 50% of Americans do not have adequate life
-              insurance coverage?
-            </Typography>
-            <Typography
               variant="body1"
               component="p"
               textAlign={"justify"}
@@ -182,7 +170,7 @@ const Home = () => {
               Annuities: Shaping Your Secure Retirement Journey
             </Typography>
             <Typography
-              variant="subtitle1"
+              variant="h6"
               component="p"
               textAlign={"center"}
               padding={1}
@@ -209,6 +197,9 @@ const Home = () => {
               textAlign={"justify"}
               color={cyan[900]}
               paddingTop={4}
+              sx={{
+                fontWeight: 400,
+              }}
             >
               Let's chat about annuities, explore your options, and design a
               retirement roadmap that's as bright as your dreams. Your future
@@ -226,14 +217,14 @@ const Home = () => {
                 to="/schedule"
                 component={Link}
               >
-                We are for you, talk to us
+                Talk to us
               </Button>
             </CardActions>
           </CardContent>
         </Box>
       </Card>
 
-      <Card sx={{ margin: 2, padding: 2 }} variant="outlined">
+      <Card sx={{ margin: 2, padding: 2 }} variant="none">
         <Box sx={{ display: "flex" }}>
           <CardContent>
             <Typography
@@ -248,6 +239,9 @@ const Home = () => {
             <Typography
               variant="body1"
               component="p"
+              sx={{
+                fontWeight: 400,
+              }}
               textAlign={"justify"}
               color={cyan[900]}
             >
@@ -271,15 +265,17 @@ const Home = () => {
               flexDirection: "column",
               justifyContent: "space-between",
             }}
-            variant="outlined"
           >
             <CardContent>
               <Typography
-                variant="h4"
+                variant="h5"
                 component="h4"
                 textAlign={"center"}
                 padding={1}
                 color={cyan[900]}
+                sx={{
+                  fontWeight: 400,
+                }}
               >
                 Protecting those dearest to your heart
               </Typography>
@@ -288,9 +284,11 @@ const Home = () => {
               sx={{ display: "flex", justifyContent: "center", margin: 4 }}
             >
               <Button
+                component={Link}
                 size="large"
+                sx={{ width: "fit-content", background: cyan[900], textAlign: 'center' }}
+                to="/schedule"
                 variant="contained"
-                sx={{ width: "fit-content", background: cyan[900] }}
               >
                 Safeguard wisely
                 <HealthAndSafetyIcon sx={{ marginLeft: 1 }} />
@@ -306,15 +304,17 @@ const Home = () => {
               flexDirection: "column",
               justifyContent: "space-between",
             }}
-            variant="outlined"
           >
             <CardContent>
               <Typography
-                variant="h4"
+                variant="h5"
                 component="h4"
                 textAlign={"center"}
                 padding={1}
                 color={cyan[900]}
+                sx={{
+                  fontWeight: 400,
+                }}
               >
                 Shaping and building your retirement dreams
               </Typography>
@@ -325,7 +325,9 @@ const Home = () => {
               <Button
                 size="large"
                 variant="contained"
-                sx={{ width: "fit-content", background: cyan[900] }}
+                sx={{ width: "fit-content", background: cyan[900], textAlign: 'center' }}
+                to="/schedule"
+                component={Link}
               >
                 Save Mindfully
                 <SavingsOutlinedIcon sx={{ marginLeft: 1 }} />
@@ -341,15 +343,17 @@ const Home = () => {
               flexDirection: "column",
               justifyContent: "space-between",
             }}
-            variant="outlined"
           >
             <CardContent>
               <Typography
-                variant="h4"
+                variant="h5"
                 component="h4"
                 textAlign={"center"}
                 padding={1}
                 color={cyan[900]}
+                sx={{
+                  fontWeight: 400,
+                }}
               >
                 Crafting Thoughtful Investment Choices for Optimal Returns
               </Typography>
@@ -360,9 +364,11 @@ const Home = () => {
               <Button
                 size="large"
                 variant="contained"
-                sx={{ width: "fit-content", background: cyan[900] }}
+                sx={{ width: "fit-content", background: cyan[900], textAlign: 'center' }}
+                to="/schedule"
+                component={Link}
               >
-                Invest intelligently
+                Invest Smartly
                 <ShowChartRoundedIcon sx={{ marginLeft: 1 }} />
               </Button>
             </CardActions>

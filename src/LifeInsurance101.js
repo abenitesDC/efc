@@ -231,7 +231,13 @@ const LifeInsurance101 = () => {
               >
                 Permanent Life Insurance
               </Typography>
-              <Typography variant="body1" component="p">
+              <Typography
+                variant="body1"
+                component="p"
+                textAlign={"center"}
+                padding={1}
+                color={cyan[900]}
+              >
                 Permanent life insurance offers both lifelong protection(1) for
                 your loved ones and the potential for cash value growth. It is a
                 versatile and valuable financial tool that can play a
@@ -259,9 +265,15 @@ const LifeInsurance101 = () => {
                 padding={1}
                 color={cyan[900]}
               >
-                Temporary Life Insurance
+                Term Life Insurance
               </Typography>
-              <Typography variant="body1" component="p">
+              <Typography
+                variant="body1"
+                component="p"
+                textAlign={"center"}
+                padding={1}
+                color={cyan[900]}
+              >
                 It is a straightforward and affordable form of life insurance
                 that provides coverage for a specified period, known as the
                 "term." If you pass away during the term of the policy, the
@@ -271,7 +283,35 @@ const LifeInsurance101 = () => {
           </Card>
         </Box>
 
-        <Typography variant="body1" component="p">
+        <Typography
+          variant="h4"
+          component="h4"
+          textAlign={"center"}
+          padding={1}
+          color={cyan[900]}
+          sx={{
+            margin: 4,
+          }}
+        >
+          Life Insurance Strategies
+        </Typography>
+        <Typography
+          variant="h4"
+          component="h4"
+          textAlign={"center"}
+          padding={1}
+          color={cyan[900]}
+        >
+          Secure What Matters Most: Flexible Insurance Solutions for Your Needs
+        </Typography>
+
+        <Typography
+          variant="body1"
+          component="p"
+          textAlign={"center"}
+          padding={1}
+          color={cyan[900]}
+        >
           Let's have a conversation and review your current life insurance
           portfolio in detail. In a rectangle, a link: “Meet with a Financial
           Specialist” These are some major life events that prompt you to

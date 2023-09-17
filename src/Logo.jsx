@@ -8,7 +8,9 @@ import './logo.scss';
 
 const Logo = () => {
   return (
-    <Box className='app--logo' sx={{ backgroundColor: cyan[900], display: 'flex', color: teal[50], gap: 1, alignItems: 'flex-start', paddingTop: 2}}>
+    <Box className='app--logo' sx={{
+      backgroundColor: cyan[900], display: 'flex', color: teal[50], gap: 1, alignItems: 'flex-start', paddingTop: 2, flex: 'auto',
+      }}>
       <Link to='/'>
         <img src={efcLogo} alt='EFC' />
         <Typography variant="h5" component="h2">
