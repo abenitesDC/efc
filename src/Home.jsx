@@ -38,6 +38,7 @@ const Home = () => {
           backgroundImage: `url(${beach})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div></div>
