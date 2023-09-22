@@ -10,6 +10,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import SavingsOutlinedIcon from "@mui/icons-material/SavingsOutlined";
 import ShowChartRoundedIcon from "@mui/icons-material/ShowChartRounded";
@@ -21,11 +22,15 @@ import seniorWalkingBeach from "./senior-walking-beach.jpg";
 import familyHangingOut from "./family-hanging-out-jetty.jpg";
 import businesswoman from "./asian-businesswoman.jpg";
 import { ReactComponent as Wave } from "./wave.svg";
+import { useTheme } from "@mui/material/styles";
+
 // import Wave from './wave.svg';
 
 import "./home.scss";
 
 const Home = () => {
+  const matches = useMediaQuery("(max-width:900px)");
+
   return (
     <Box className="life-insurance-101">
       <Paper
@@ -51,7 +56,7 @@ const Home = () => {
         }}
       >
         <Typography
-          variant="h4"
+          variant={matches ? "h5" : "h4"}
           component="h4"
           textAlign={"center"}
           padding={1}
@@ -117,6 +122,9 @@ const Home = () => {
             >
               Plan for the future with our EverSafe Life Solutions
             </Typography>
+            {matches && (
+              <CardMedia component="img" image={familyHangingOut} alt="beach" />
+            )}
             <Typography
               variant="body1"
               component="p"
@@ -135,7 +143,7 @@ const Home = () => {
               <Button
                 component={Link}
                 size="large"
-                sx={{ width: "fit-content", background: cyan[900] }}
+                sx={{ width: "fit-content", background: cyan[900], textAlign: 'center' }}
                 to="/schedule"
                 variant="contained"
               >
@@ -143,23 +151,27 @@ const Home = () => {
               </Button>
             </CardActions>
           </CardContent>
-          <CardMedia
-            component="img"
-            sx={{ width: "50vw" }}
-            image={familyHangingOut}
-            alt="beach"
-          />
+          {!matches && (
+            <CardMedia
+              component="img"
+              sx={{ width: "50vw" }}
+              image={familyHangingOut}
+              alt="beach"
+            />
+          )}
         </Box>
       </Card>
 
       <Card sx={{ margin: 2, padding: 2 }} variant="outlined">
         <Box sx={{ display: "flex" }}>
-          <CardMedia
-            component="img"
-            sx={{ width: "50vw" }}
-            image={seniorWalkingBeach}
-            alt="beach"
-          />
+          {!matches && (
+            <CardMedia
+              component="img"
+              sx={{ width: "50vw" }}
+              image={seniorWalkingBeach}
+              alt="beach"
+            />
+          )}
           <CardContent>
             <Typography
               variant="h4"
@@ -180,6 +192,13 @@ const Home = () => {
               Embark on a journey of financial empowerment and secure your
               retirement future like never before.
             </Typography>
+            {matches && (
+              <CardMedia
+                component="img"
+                image={seniorWalkingBeach}
+                alt="beach"
+              />
+            )}
             <Typography
               variant="body1"
               component="p"
@@ -256,7 +275,10 @@ const Home = () => {
             </Typography>
           </CardContent>
         </Box>
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{
+          display: "flex",
+          flexDirection: matches ? "column" : "row",
+        }}>
           <Card
             sx={{
               margin: 2,
@@ -287,7 +309,11 @@ const Home = () => {
               <Button
                 component={Link}
                 size="large"
-                sx={{ width: "fit-content", background: cyan[900], textAlign: 'center' }}
+                sx={{
+                  width: "fit-content",
+                  background: cyan[900],
+                  textAlign: "center",
+                }}
                 to="/schedule"
                 variant="contained"
               >
@@ -326,7 +352,11 @@ const Home = () => {
               <Button
                 size="large"
                 variant="contained"
-                sx={{ width: "fit-content", background: cyan[900], textAlign: 'center' }}
+                sx={{
+                  width: "fit-content",
+                  background: cyan[900],
+                  textAlign: "center",
+                }}
                 to="/schedule"
                 component={Link}
               >
@@ -365,7 +395,11 @@ const Home = () => {
               <Button
                 size="large"
                 variant="contained"
-                sx={{ width: "fit-content", background: cyan[900], textAlign: 'center' }}
+                sx={{
+                  width: "fit-content",
+                  background: cyan[900],
+                  textAlign: "center",
+                }}
                 to="/schedule"
                 component={Link}
               >
@@ -389,6 +423,13 @@ const Home = () => {
             >
               Your Financial Dreams are our Commitment
             </Typography>
+            {matches && (
+              <CardMedia
+                component="img"
+                image={businesswoman}
+                alt="beach"
+              />
+            )}
             <Typography
               variant="body1"
               component="p"
@@ -416,12 +457,14 @@ const Home = () => {
               </Button>
             </CardActions>
           </CardContent>
-          <CardMedia
-            component="img"
-            sx={{ width: "50vw" }}
-            image={businesswoman}
-            alt="beach"
-          />
+          {!matches && (
+            <CardMedia
+              component="img"
+              sx={{ width: "50vw" }}
+              image={businesswoman}
+              alt="beach"
+            />
+          )}
         </Box>
       </Card>
     </Box>
