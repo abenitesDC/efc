@@ -5,7 +5,7 @@ import { cyan, teal } from '@mui/material/colors';
 const Footer = () => {
   return (
     <Box className='app--footer' sx={{ padding: 1, backgroundColor: cyan[900], color: cyan[500]}}>
-      <Typography variant='caption' component={'p'} sx={{ fontSize: '10px'}}>
+      <Typography variant='caption' component={'div'} sx={{ fontSize: '10px'}}>
         <Box>
             <Link
             href="https://www.freepik.com/free-photo/family-hanging-out-jetty_49545807.htm"
