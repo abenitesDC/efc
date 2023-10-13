@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import {
@@ -20,6 +20,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import { cyan, teal } from "@mui/material/colors";
+import ReactGA from "react-ga4";
 
 import { useForm, Controller } from "react-hook-form";
 import { usaStates } from "typed-usa-states";
@@ -27,6 +28,17 @@ import { patternFormatter, removePatternFormat } from "react-number-format";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 import { InlineWidget } from "react-calendly";
+
+ReactGA.initialize([
+  {
+    trackingId: "G-VRS6H0GGWT",
+    // gaOptions: {...}, // optional
+    // gtagOptions: {...}, // optional
+  },
+  {
+    trackingId: "your second GA measurement id",
+  },
+]);
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -67,8 +79,18 @@ const validateEmail = (email) => {
   return re.test(email);
 };
 
+const CONTACT_FORM_TAB_NAME = 'contactFormTab';
+const CONTACT_FORM_TAB_INDEX = 0;
+const SCHEDULE_TAB_NAME = 'scheduleTab';
+const SCHEDULE_TAB_INDEX = 1;
+
+const tabMap = {
+  [CONTACT_FORM_TAB_INDEX]: CONTACT_FORM_TAB_NAME,
+  [SCHEDULE_TAB_INDEX]: SCHEDULE_TAB_NAME,
+};
+
 const Schedule = () => {
-  const [tabIndex, setTabIndex] = React.useState(0);
+  const [tabIndex, setTabName] = React.useState(CONTACT_FORM_TAB_INDEX);
   const [isSubmitLoading, setIsSubmitLoading] = React.useState(false);
   const [formSent, setFormSent] = React.useState(false);
   const navigate = useNavigate();
@@ -89,8 +111,27 @@ const Schedule = () => {
     },
   });
 
+  useEffect(() => {
+    // Send pageview with a custom path
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/#/schedule",
+      title: "Schedule page",
+    });
+  }, []);
+
   const handleChange = (_event, tabIndex) => {
-    setTabIndex(tabIndex);
+    // Send a custom event
+    ReactGA.event({
+      category: "Booking",
+      action: tabMap[tabIndex],
+      label: tabMap[tabIndex], // optional
+      // value: 1, // optional, must be a number
+      // nonInteraction: true, // optional, true/false
+      // transport: "xhr", // optional, beacon/xhr/image
+    });
+
+    setTabName(tabIndex);
   };
 
   const onSubmit = (data) => {
@@ -108,13 +149,13 @@ const Schedule = () => {
   };
 
   const modalStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
     color: cyan[900],
-    transform: 'translate(-50%, -50%)',
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
+    bgcolor: "background.paper",
     border: `2px solid ${cyan[900]}`,
     boxShadow: 24,
     borderRadius: 4,
@@ -133,7 +174,7 @@ const Schedule = () => {
           <Tab label="Book a Free Consultation" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      <CustomTabPanel value={tabIndex} index={0}>
+      <CustomTabPanel value={tabIndex} index={CONTACT_FORM_TAB_INDEX}>
         <Typography
           variant="h5"
           component="p"
@@ -404,9 +445,13 @@ const Schedule = () => {
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Quote Request Sent Successfully
             </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2, paddingBottom: 4 }}>
-              Your quote request form was sent successfully. We are working hard on
-              your request. Someone will contact you soon.
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 2, paddingBottom: 4 }}
+            >
+              Thank you for entrusting us with your information. We will review
+              it, and reach out to you shortly for a free, zero-commitment
+              personalized consultation.
             </Typography>
             <Button
               type="submit"
@@ -419,7 +464,7 @@ const Schedule = () => {
           </Box>
         </Modal>
       </CustomTabPanel>
-      <CustomTabPanel value={tabIndex} index={1}>
+      <CustomTabPanel value={tabIndex} index={SCHEDULE_TAB_INDEX}>
         <InlineWidget url="https://calendly.com/equityfamilycare/efc-intro-call?text_color=00695c&primary_color=00695c" />
       </CustomTabPanel>
     </>
