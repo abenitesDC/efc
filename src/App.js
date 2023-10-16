@@ -2,6 +2,8 @@ import { Grid, ThemeProvider, createTheme } from '@mui/material';
 import {
     HashRouter as Router,
 } from "react-router-dom";
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 import Header from './Header';
 import Body from './Body';
@@ -29,21 +31,23 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Grid
-        className="app"
-          item
-          xs={12}
-          md={8}
-          sx={{
-            '& .markdown': {
-              py: 3,
-            },
-          }}
-        >
-          <Header />
-          <Body />
-          <Footer />
-        </Grid>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <Grid
+          className="app"
+            item
+            xs={12}
+            md={8}
+            sx={{
+              '& .markdown': {
+                py: 3,
+              },
+            }}
+          >
+            <Header />
+            <Body />
+            <Footer />
+          </Grid>
+        </LocalizationProvider>
       </ThemeProvider>
     </Router>
   );

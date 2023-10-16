@@ -19,6 +19,7 @@ import {
   Input,
   FormHelperText,
 } from "@mui/material";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { cyan, teal } from "@mui/material/colors";
 import ReactGA from "react-ga4";
 
@@ -79,9 +80,9 @@ const validateEmail = (email) => {
   return re.test(email);
 };
 
-const CONTACT_FORM_TAB_NAME = 'contactFormTab';
+const CONTACT_FORM_TAB_NAME = "contactFormTab";
 const CONTACT_FORM_TAB_INDEX = 0;
-const SCHEDULE_TAB_NAME = 'scheduleTab';
+const SCHEDULE_TAB_NAME = "scheduleTab";
 const SCHEDULE_TAB_INDEX = 1;
 
 const tabMap = {
@@ -185,6 +186,24 @@ const Schedule = () => {
         >
           Tell us about yourself
         </Typography>
+        {/* <Box
+        sx={{
+          paddingLeft: 3,
+          paddingRight: 3,
+        }}
+      > */}
+        <Typography
+          variant="body1"
+          component="p"
+          textAlign={"left"}
+          color={cyan[900]}
+          paddingTop={1}
+          paddingBottom={1}
+        >
+          Equity Family Care offers financial solutions and life insurance from
+          America's Most Trusted Life Insurers.
+        </Typography>
+      {/* </Box> */}
         <Typography
           variant="body1"
           component="p"
@@ -206,6 +225,23 @@ const Schedule = () => {
               gap: "8px",
             }}
           >
+             <FormControl
+              sx={{ width: "100%", maxWidth: MAX_WIDTH_FORM }}
+              variant="standard"
+            >
+              <DatePicker />
+              {/* <TextField
+                id="dob"
+                label="Date of birth"
+                variant="standard"
+                error={!!errors?.dob}
+                helperText={errors?.dob?.message}
+                {...register("dob", {
+                  required: "Date of birth is required",
+                  validate: (value) => !!value.trim(),
+                })}
+              /> */}
+            </FormControl>
             <FormControl
               sx={{ width: "100%", maxWidth: MAX_WIDTH_FORM }}
               variant="standard"
@@ -218,6 +254,7 @@ const Schedule = () => {
                 helperText={errors?.firstName?.message}
                 {...register("firstName", {
                   required: "First name is required",
+                  validate: (value) => !!value.trim(),
                 })}
               />
             </FormControl>
@@ -233,6 +270,7 @@ const Schedule = () => {
                 helperText={errors?.lastName?.message}
                 {...register("lastName", {
                   required: "Last name is required",
+                  validate: (value) => !!value.trim(),
                 })}
               />
             </FormControl>
@@ -260,7 +298,10 @@ const Schedule = () => {
               <Controller
                 name="phoneNumber"
                 control={control}
-                rules={{ required: "Phone number is required" }}
+                rules={{
+                  required: "Phone number is required",
+                  validate: (value) => (!!value.trim() && value.replace(/\D+/g, '').length === 10) || 'Phone number is invalid',
+                }}
                 render={({ field }) => {
                   return (
                     <TextField
