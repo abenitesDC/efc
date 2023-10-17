@@ -225,23 +225,12 @@ const Schedule = () => {
               gap: "8px",
             }}
           >
-             <FormControl
+             {/* <FormControl
               sx={{ width: "100%", maxWidth: MAX_WIDTH_FORM }}
               variant="standard"
             >
               <DatePicker />
-              {/* <TextField
-                id="dob"
-                label="Date of birth"
-                variant="standard"
-                error={!!errors?.dob}
-                helperText={errors?.dob?.message}
-                {...register("dob", {
-                  required: "Date of birth is required",
-                  validate: (value) => !!value.trim(),
-                })}
-              /> */}
-            </FormControl>
+            </FormControl> */}
             <FormControl
               sx={{ width: "100%", maxWidth: MAX_WIDTH_FORM }}
               variant="standard"
@@ -506,7 +495,7 @@ const Schedule = () => {
         </Modal>
       </CustomTabPanel>
       <CustomTabPanel value={tabIndex} index={SCHEDULE_TAB_INDEX}>
-        <InlineWidget url="https://calendly.com/equityfamilycare/efc-intro-call?text_color=00695c&primary_color=00695c" />
+        <InlineWidget url="https://calendly.com/equityfamilycare/free-financial-consultation?text_color=00695c&primary_color=00695c" />
       </CustomTabPanel>
     </>
   );
